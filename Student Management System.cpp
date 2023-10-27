@@ -9,6 +9,7 @@ using namespace std;
 class student {
     string full_name;
     int campus_id;
+    string course_name;
     string campus_name;
     string dob;
 
@@ -19,20 +20,20 @@ public:
 
 void student::new_registration() {
     system("cls");
-    cout << "\t ENTER YOUR FULL NAME: " << endl;
-    cin.ignore();
+    cout << "\t\t\t\t\t\t-----STUDENT MANAGEMENT SYSTEM-----" << endl;
+    cout << "\t ENTER YOUR FULL NAME: ";
     getline(cin, full_name);
-    full_name = toupper(full_name);
-    cout << "\t ENTER A NEW CAMPUS ID: " << endl;
+    cout << "\t ENTER A NEW CAMPUS ID: ";
     cin >> campus_id;
-    cout << "\t ENTER YOUR CAMPUS NAME: " << endl;
+    cout << "\t ENTER YOUR CAMPUS NAME: ";
     cin.ignore();
     getline(cin, campus_name);
-    campus_name = toupper(campus_name);
-    cout << "\t ENTER YOUR DATE OF BIRTH(XX Month Name XXXX): " << endl;
+    cout << "\t ENTER YOUR COURSE NAME: ";
+    cin.ignore();
+    getline(cin, course_name);
+    cout << "\t ENTER YOUR DATE OF BIRTH(XX Month Name XXXX): ";
     getline(cin, dob);
-    dob = toupper(dob);
-    cout << "\t REGISTRATION SUCCESSFUL & WELCOME TO OUR INSTITUTION..:)" << endl;
+    cout << "\n\n\n\t REGISTRATION SUCCESSFUL & WELCOME TO OUR INSTITUTION..:)\n\n\n";
 }
 
 void student::show_details() {
@@ -46,4 +47,5 @@ int main() {
     student S;
     S.new_registration();
     S.show_details();
+   
 }
