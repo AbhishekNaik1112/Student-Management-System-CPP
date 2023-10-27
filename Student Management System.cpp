@@ -6,25 +6,25 @@ using namespace std;
 
 class student {
 	string full_name;
-	long long campus_id;
-	string course_name;
+	long long campus_id; // Changed the type to long long
 	string campus_name;
+	string course_name;
 	string dob;
 	string batch;
 	string blood_group;
-	long long contact_number;
+	string contact_number;
 	string perm_address;
 
 public:
-	student() : campus_id(0), contact_number(0) {}
+	student() : campus_id(0), contact_number("0") {} // Corrected the initialization
 
 	void new_registration();
 	void show_details();
-	long long getCampusId() const;
+	long long getCampusId() const; // Corrected the return type to long long
 };
 
-void write_registration(); 
-void show_details(long long n); 
+void write_registration();
+void show_details(long long n);
 
 void student::new_registration() {
 	system("cls");
@@ -32,7 +32,7 @@ void student::new_registration() {
 	cin.ignore();
 	getline(cin, full_name);
 	cout << "\t\t ENTER A NEW CAMPUS ID: ";
-	cin >> campus_id;
+	cin >> campus_id; // Read as long long
 	cin.ignore();
 	cout << "\t\t ENTER YOUR CAMPUS NAME: ";
 	getline(cin, campus_name);
@@ -45,10 +45,9 @@ void student::new_registration() {
 	cout << "\t\t ENTER YOUR BLOOD GROUP: ";
 	getline(cin, blood_group);
 	cout << "\t\t ENTER YOUR CONTACT NUMBER: ";
-	cin >> contact_number;
-	cin.ignore();
+	getline(cin, contact_number);
 	cout << "\t\t ENTER YOUR PERMANENT ADDRESS: ";
-	//cin.ignore();
+	// cin.ignore(); // Remove this line
 	getline(cin, perm_address);
 	cout << "\n\n\n\t REGISTRATION SUCCESSFUL & WELCOME TO OUR INSTITUTION..:)\n\n\n";
 }
@@ -139,7 +138,7 @@ int main() {
 		system("cls");
 		cout << "\t\tENTER THE CAMPUS ID: " << endl;
 		cin >> n;
-		cin.ignore();  
+		// cin.ignore(); // Remove this line
 		show_details(n);
 		break;
 	case '3':
