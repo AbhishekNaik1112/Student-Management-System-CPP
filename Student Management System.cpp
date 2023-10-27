@@ -13,7 +13,6 @@ class student {
 
 public:
 	void new_registration();
-	void display_registration();
 };
 
 void student::new_registration() {
