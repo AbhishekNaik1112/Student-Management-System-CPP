@@ -13,6 +13,7 @@ class student {
 
 public:
 	void new_registration();
+	show_details();
 };
 
 void student::new_registration() {
@@ -33,3 +34,5 @@ void student::new_registration() {
 	dob = toupper(dob);
 	cout << "\t REGISTRATION SUCCESFUL & WELCOME TO OUR INSTITUTION..:)" << endl;
 	}
+
+
