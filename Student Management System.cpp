@@ -13,7 +13,7 @@ class student {
 
 public:
 	void new_registration();
-	show_details();
+	void show_details();
 };
 
 void student::new_registration() {
@@ -33,6 +33,13 @@ void student::new_registration() {
 	getline(cin, dob);
 	dob = toupper(dob);
 	cout << "\t REGISTRATION SUCCESFUL & WELCOME TO OUR INSTITUTION..:)" << endl;
+	}
+
+void student::show_details() {
+	cout << "\t FULL NAME:" << full_name << endl;
+	cout << "\t CAMPUS ID:" << campus_id << endl;
+	cout << "\t CAMPUS NAME:" << campus_name << endl;
+	cout << "\t DATE OF BIRTH:" << dob << endl;
 	}
 
 
