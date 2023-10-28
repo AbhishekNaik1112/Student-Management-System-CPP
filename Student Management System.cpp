@@ -1,78 +1,111 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-
-using namespace std;
+#include <thread> 
+#include <chrono>
 
 class student {
-	string full_name;
-	long long campus_id; // Changed the type to long long
-	string campus_name;
-	string course_name;
-	string dob;
-	string batch;
-	string blood_group;
-	string contact_number;
-	string perm_address;
+	std::string full_name;
+	long long campus_id;
+	std::string campus_name;
+	std::string course_name;
+	std::string dob;
+	std::string batch;
+	std::string blood_group;
+	std::string contact_number;
+	std::string perm_address;
 
 public:
-	student() : campus_id(0), contact_number("0") {} // Corrected the initialization
+	student() : campus_id(0), contact_number("0") {}
 
 	void new_registration();
 	void show_details();
-	long long getCampusId() const; // Corrected the return type to long long
+	long long getCampusId() const;
+	void modify();
 };
 
 void write_registration();
 void show_details(long long n);
+void modify_details(long long n);
 
 void student::new_registration() {
 	system("cls");
-	cout << "\t\t ENTER YOUR FULL NAME: ";
-	cin.ignore();
-	getline(cin, full_name);
-	cout << "\t\t ENTER A NEW CAMPUS ID: ";
-	cin >> campus_id; // Read as long long
-	cin.ignore();
-	cout << "\t\t ENTER YOUR CAMPUS NAME: ";
-	getline(cin, campus_name);
-	cout << "\t\t ENTER YOUR COURSE NAME: ";
-	getline(cin, course_name);
-	cout << "\t\t ENTER YOUR DATE OF BIRTH(XX Month Name XXXX): ";
-	getline(cin, dob);
-	cout << "\t\t ENTER YOUR BATCH YEAR: ";
-	getline(cin, batch);
-	cout << "\t\t ENTER YOUR BLOOD GROUP: ";
-	getline(cin, blood_group);
-	cout << "\t\t ENTER YOUR CONTACT NUMBER: ";
-	getline(cin, contact_number);
-	cout << "\t\t ENTER YOUR PERMANENT ADDRESS: ";
-	// cin.ignore(); // Remove this line
-	getline(cin, perm_address);
-	cout << "\n\n\n\t REGISTRATION SUCCESSFUL & WELCOME TO OUR INSTITUTION..:)\n\n\n";
+	std::cout << "\t\t ENTER YOUR FULL NAME: ";
+	std::cin.ignore();
+	std::getline(std::cin, full_name, '\n');
+	std::cout << "\t\t ENTER A NEW CAMPUS ID: ";
+	std::cin >> campus_id;
+	std::cin.ignore();
+	std::cout << "\t\t ENTER YOUR CAMPUS NAME: ";
+	std::getline(std::cin, campus_name, '\n');
+	std::cout << "\t\t ENTER YOUR COURSE NAME: ";
+	std::getline(std::cin, course_name, '\n');
+	std::cout << "\t\t ENTER YOUR DATE OF BIRTH(XX Month Name XXXX): ";
+	std::getline(std::cin, dob, '\n');
+	std::cout << "\t\t ENTER YOUR BATCH YEAR: ";
+	std::getline(std::cin, batch, '\n');
+	std::cout << "\t\t ENTER YOUR BLOOD GROUP: ";
+	std::getline(std::cin, blood_group, '\n');
+	std::cout << "\t\t ENTER YOUR CONTACT NUMBER: ";
+	std::getline(std::cin, contact_number, '\n');
+	std::cout << "\t\t ENTER YOUR PERMANENT ADDRESS: ";
+	std::getline(std::cin, perm_address, '\n');
+	std::cout << "\n\n\n\t REGISTRATION SUCCESSFUL & WELCOME TO OUR INSTITUTION..:)\n\n\n";
 }
 
 void student::show_details() {
 	system("cls");
-	cout << "\t\t FULL NAME: " << full_name << endl;
-	cout << "\t\t CAMPUS ID: " << campus_id << endl;
-	cout << "\t\t CAMPUS NAME: " << campus_name << endl;
-	cout << "\t\t COURSE NAME: " << course_name << endl;
-	cout << "\t\t DATE OF BIRTH: " << dob << endl;
-	cout << "\t\t BATCH: " << batch << endl;
-	cout << "\t\t BLOOD GROUP: " << blood_group << endl;
-	cout << "\t\t CONTACT NUMBER: " << contact_number << endl;
-	cout << "\t\t PERMANENT ADDRESS: " << perm_address << endl;
+	std::cout << "\t\t FULL NAME: " << full_name << std::endl;
+	std::cout << "\t\t CAMPUS ID: " << campus_id << std::endl;
+	std::cout << "\t\t CAMPUS NAME: " << campus_name << std::endl;
+	std::cout << "\t\t COURSE NAME: " << course_name << std::endl;
+	std::cout << "\t\t DATE OF BIRTH: " << dob << std::endl;
+	std::cout << "\t\t BATCH: " << batch << std::endl;
+	std::cout << "\t\t BLOOD GROUP: " << blood_group << std::endl;
+	std::cout << "\t\t CONTACT NUMBER: " << contact_number << std::endl;
+	std::cout << "\t\t PERMANENT ADDRESS: " << perm_address << std::endl;
 }
 
 long long student::getCampusId() const {
 	return campus_id;
 }
 
+void student::modify() {
+	system("cls");
+	std::cout << "\t\t MODIFY STUDENT DETAILS\n";
+
+	std::cout << "\t\t ENTER YOUR FULL NAME: ";
+	std::cin.ignore();
+	std::getline(std::cin, full_name, '\n');
+
+	std::cout << "\t\t ENTER YOUR CAMPUS NAME: ";
+	std::getline(std::cin, campus_name, '\n');
+
+	std::cout << "\t\t ENTER YOUR COURSE NAME: ";
+	std::getline(std::cin, course_name, '\n');
+
+	std::cout << "\t\t ENTER YOUR DATE OF BIRTH(XX Month Name XXXX): ";
+	std::getline(std::cin, dob, '\n');
+
+	std::cout << "\t\t ENTER YOUR BATCH YEAR: ";
+	std::getline(std::cin, batch, '\n');
+
+	std::cout << "\t\t ENTER YOUR BLOOD GROUP: ";
+	std::getline(std::cin, blood_group, '\n');
+
+	std::cout << "\t\t ENTER YOUR CONTACT NUMBER: ";
+	std::getline(std::cin, contact_number, '\n');
+
+	std::cout << "\t\t ENTER YOUR PERMANENT ADDRESS: ";
+	std::getline(std::cin, perm_address, '\n');
+
+	std::cout << "\n\n\t\t DETAILS UPDATED SUCCESSFULLY\n\n";
+}
+
 void write_registration() {
 	student reg;
-	ofstream outFile;
-	outFile.open("registration.dat", ios::binary | ios::app);
+	std::ofstream outFile;
+	outFile.open("registration.dat", std::ios::binary | std::ios::app);
 	reg.new_registration();
 	outFile.write(reinterpret_cast<char*>(&reg), sizeof(student));
 	outFile.close();
@@ -81,13 +114,13 @@ void write_registration() {
 void show_details(long long n) {
 	student reg;
 	bool flag = false;
-	ifstream inFile;
-	inFile.open("registration.dat", ios::binary);
+	std::ifstream inFile;
+	inFile.open("registration.dat", std::ios::binary);
 	if (!inFile) {
-		cout << "Details could not be opened !! Press any Key...";
+		std::cout << "Details could not be opened !! Press any Key...";
 		return;
 	}
-	cout << "\n\t\t\tSTUDENT DETAILS\n";
+	std::cout << "\n\t\t\tSTUDENT DETAILS\n";
 	while (inFile.read(reinterpret_cast<char*>(&reg), sizeof(student))) {
 		if (reg.getCampusId() == n) {
 			reg.show_details();
@@ -95,8 +128,39 @@ void show_details(long long n) {
 		}
 	}
 	inFile.close();
-	if (flag == false)
-		cout << "\n\n\t\tCampus ID does not exist";
+	if (!flag)
+		std::cout << "\n\n\t\tCampus ID does not exist";
+}
+
+void modify_details(long long n) {
+	student reg;
+	bool found = false;
+	std::fstream File;
+	File.open("registration.dat", std::ios::binary | std::ios::in | std::ios::out);
+
+	if (!File) {
+		std::cout << "Details could not be opened! Press any key...";
+		return;
+	}
+
+	while (File.read(reinterpret_cast<char*>(&reg), sizeof(student))) {
+		if (reg.getCampusId() == n) {
+			reg.show_details();
+			std::cout << "\n\n\t\tEnter The New Details\n";
+			reg.modify();
+
+			int pos = (-1) * static_cast<int>(sizeof(student));
+			File.seekp(pos, std::ios::cur);
+			File.write(reinterpret_cast<char*>(&reg), sizeof(student));
+			found = true;
+			break;
+		}
+	}
+
+	File.close();
+
+	if (!found)
+		std::cout << "\n\n\t\tCampus ID Not Found";
 }
 
 int main() {
@@ -104,61 +168,51 @@ int main() {
 	long long n;
 
 	system("cls");
-	cout << "\t\t\t----------------------------------------" << endl;
-	cout << "\t\t\t| WELCOME TO STUDENT MANAGEMENT SYSTEM |" << endl;
-	cout << "\t\t\t----------------------------------------" << endl;
-	cout << endl;
+	std::cout << "\t\t\t----------------------------------------" << std::endl;
+	std::cout << "\t\t\t| WELCOME TO STUDENT MANAGEMENT SYSTEM |" << std::endl;
+	std::cout << "\t\t\t----------------------------------------" << std::endl;
+	std::cout << std::endl;
 
-	cout << "\t\t\t\t ------MAIN MENU------" << endl;
-	cout << endl;
-	cout << "\t\t1. NEW REGISTRATION" << endl;
-	cout << endl;
-	cout << "\t\t2. SHOW STUDENT INFORMATION" << endl;
-	cout << endl;
-	cout << "\t\t3. UPDATE STUDENT INFORMATION" << endl;
-	cout << endl;
-	cout << "\t\t4. LIST OF ALL STUDENTS" << endl;
-	cout << endl;
-	cout << "\t\t5. ADD CREDITS" << endl;
-	cout << endl;
-	cout << "\t\t6. CREDITS DETAILS" << endl;
-	cout << endl;
-	cout << "\t\t7. EXIT" << endl;
-	cout << endl;
+	std::cout << "\t\t\t\t ------MAIN MENU------" << std::endl;
+	std::cout << "\t\t\t\t 1. NEW REGISTRATION" << std::endl;
+	std::cout << "\t\t\t\t 2. SHOW DETAILS" << std::endl;
+	std::cout << "\t\t\t\t 3. MODIFY DETAILS" << std::endl;
+	std::cout << "\t\t\t\t 4. EXIT" << std::endl;
 
-	cout << "\t\tENTER YOUR CHOICE(1-7): ";
-	cin >> c;
-	cout << "\n";
+	std::cout << "\t\t\t Enter Your Choice: ";
+	std::cin >> c;
 
 	switch (c) {
 	case '1':
 		write_registration();
+		return main();
 		break;
+
 	case '2':
-		system("cls");
-		cout << "\t\tENTER THE CAMPUS ID: " << endl;
-		cin >> n;
-		// cin.ignore(); // Remove this line
+		std::cout << "\t\t\t Enter Your Campus ID: ";
+		std::cin >> n;
 		show_details(n);
-		break;
+		char ch;
+		std::cout << "Press Any Key to return to main";
+		std::cin >> ch;
+		//::this_thread::sleep_for(std::chrono::seconds(5));
+		return main();
+
 	case '3':
-		// update student information here
-		break;
+		std::cout << "\t\t\t Enter Your Campus ID: ";
+		std::cin >> n;
+		modify_details(n);
+		std::cout << "Press Any Key to return to main";
+		std::cin >> ch;
+		//std::this_thread::sleep_for(std::chrono::seconds(5));
+		return main();
+	
 	case '4':
-		// list of all students here
+		exit(0);
 		break;
-	case '5':
-		// add credits here
-		break;
-	case '6':
-		// credits details here
-		break;
-	case '7':
-		system("cls");
-		return 0;
+
 	default:
-		cout << "Invalid choice. Exiting..." << endl;
-		break;
+		std::cout << "\a";
 	}
 
 	return 0;
