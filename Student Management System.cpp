@@ -105,7 +105,7 @@ void write_registration() {
 
     if (!outFile) {
         std::cout << "Error opening file for writing. Registration failed." << std::endl;
-        return main;
+        return;
     }
 
     reg.new_registration();
@@ -121,7 +121,7 @@ void show_details(long long n) {
 
     if (!inFile) {
         std::cout << "Details could not be opened! Press any key..." << std::endl;
-        return main;
+        return;
     }
 
     std::cout << "\n\t\t\tSTUDENT DETAILS\n";
@@ -146,7 +146,7 @@ void modify_details(long long n) {
 
     if (!File) {
         std::cout << "Details could not be opened! Press any key..." << std::endl;
-        return main;
+        return;
     }
 
     while (File.read(reinterpret_cast<char*>(&reg), sizeof(student))) {
