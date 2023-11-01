@@ -17,7 +17,6 @@ class student {
 
 public:
     student() : campus_id(0), contact_number("0") {}
-
     void new_registration();
     void show_details() const;
     long long getCampusId() const;
